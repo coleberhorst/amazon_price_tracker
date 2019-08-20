@@ -46,3 +46,9 @@ for key, w in WISHLISTS.items():
     print(key, sep="\n")
     for item in wishlist_links(w):
         print(product_info(item))
+
+# TODO include links
+# TODO price data structure
+# TODO include images
+# TODO price history
+# TODO config file
