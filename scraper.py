@@ -4,11 +4,7 @@ from bs4 import BeautifulSoup
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Brave Chrome/76.0.3809.100 Safari/537.36"}
 WISHLISTS = {
-                "Replacement": "https://www.amazon.com/hz/wishlist/ls/3S7A4JE45XKIU",
-                "Clothing": "https://www.amazon.com/hz/wishlist/ls/3P8GNXAAAM2HE",
-                "Consumables": "https://www.amazon.com/hz/wishlist/ls/3Q0GBZP6F120Q",
-                "Indulgent": "https://www.amazon.com/hz/wishlist/ls/2CQFAZL80VSIC",
-                "Secondary": "https://www.amazon.com/hz/wishlist/ls/IE0QAES8RXDH"
+                "Wishlist": "https://www.amazon.com/hz/wishlist/ls/3S7A4JE45XKIU",
             }
 AMAZON_DIVS = {"title": "productTitle", "price": "priceblock_ourprice", "wishlist": "g-items"}
 
@@ -42,13 +38,23 @@ def product_info(url):
     return title, price
 
 
+total = 0
 for key, w in WISHLISTS.items():
     print(key, sep="\n")
     for item in wishlist_links(w):
-        print(product_info(item))
+        title, price = product_info(item)
+        try:
+            total += float(price)
+        except ValueError:
+            pass
+        print(title, price)
+print("Total: ", total)
 
 # TODO include links
 # TODO price data structure
 # TODO include images
 # TODO price history
 # TODO config file
+# TODO graphs and databases
+# TODO include products no longer sourced
+# TODO 3rd party, used and regular pricing
