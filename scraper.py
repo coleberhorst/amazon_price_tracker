@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Brave Chrome/76.0.3809.100 Safari/537.36"}
 WISHLISTS = {
-                "Wishlist": "https://www.amazon.com/hz/wishlist/ls/3S7A4JE45XKIU",
+                "Wishlist": "https://www.amazon.com/hz/wishlist/ls/3S7A4JE45XKIU?ref_=wl_share",
             }
 AMAZON_DIVS = {"title": "productTitle", "price": "priceblock_ourprice", "wishlist": "g-items"}
 
@@ -36,7 +36,6 @@ def product_info(url):
     except ValueError:
         price = "Not Available"
     return title, price
-
 
 total = 0
 for key, w in WISHLISTS.items():
